@@ -18,3 +18,8 @@ terraform-format:
 
 terraform-validate:
 	cd $(TERRAFORM_DIR) && terraform validate .
+
+ansible-setup:
+	cd $(ANSIBLE_DIR) && $(MAKE) setup
+
+setup: terraform-deploy ansible-setup

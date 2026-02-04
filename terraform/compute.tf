@@ -27,7 +27,7 @@ resource "yandex_compute_instance" "vm-1" {
     ssh-keys = "ilrosch:${file("~/.ssh/id_ed25519.pub")}"
   }
 
-  depends_on = [yandex_mdb_postgresql_database.db]
+  depends_on = [yandex_vpc_subnet.subnet]
 }
 
 resource "yandex_compute_instance" "vm-2" {
@@ -55,5 +55,6 @@ resource "yandex_compute_instance" "vm-2" {
     ssh-keys = "ilrosch:${file("~/.ssh/id_ed25519.pub")}"
   }
 
-  depends_on = [yandex_mdb_postgresql_database.db]
+  depends_on = [yandex_vpc_subnet.subnet]
 }
+

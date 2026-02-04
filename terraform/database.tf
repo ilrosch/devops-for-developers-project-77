@@ -1,6 +1,6 @@
 resource "yandex_mdb_postgresql_cluster" "dbcluster" {
   name        = "hexlet-cluster"
-  environment = "PRESTABLE"
+  environment = "PRODUCTION"
   network_id  = yandex_vpc_network.net.id
 
   config {

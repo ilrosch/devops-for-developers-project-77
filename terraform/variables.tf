@@ -28,6 +28,12 @@ variable "db_version" {
   type        = number
 }
 
+variable "db_port" {
+  description = "Postgres DB: port"
+  sensitive   = false
+  type        = number
+}
+
 variable "db_name" {
   description = "Postgres DB: name"
   sensitive   = false
@@ -48,6 +54,12 @@ variable "db_password" {
 
 variable "yc_ssl" {
   description = "Certificate SSL"
+  sensitive   = true
+  type        = string
+}
+
+variable "dd_api_key" {
+  description = "DataDog API Key"
   sensitive   = true
   type        = string
 }
