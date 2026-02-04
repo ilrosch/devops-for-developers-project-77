@@ -58,8 +58,26 @@ variable "yc_ssl" {
   type        = string
 }
 
+variable "domain" {
+  description = "Your domain name"
+  sensitive   = false
+  type        = string
+}
+
 variable "dd_api_key" {
   description = "DataDog API Key"
+  sensitive   = true
+  type        = string
+}
+
+variable "dd_api_url" {
+  description = "DataDog API URL"
+  sensitive   = true
+  type        = string
+}
+
+variable "dd_app_key" {
+  description = "DataDog App URL"
   sensitive   = true
   type        = string
 }

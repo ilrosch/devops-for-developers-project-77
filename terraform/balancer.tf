@@ -1,7 +1,3 @@
-data "yandex_cm_certificate" "cert" {
-  name = var.yc_ssl
-}
-
 resource "yandex_alb_http_router" "router" {
   name = "hexlet-router"
 }
@@ -9,7 +5,7 @@ resource "yandex_alb_http_router" "router" {
 resource "yandex_alb_virtual_host" "virtual-host" {
   name           = "hexlet-vhost"
   http_router_id = yandex_alb_http_router.router.id
-  authority      = ["*"]
+  authority      = [var.domain]
   route {
     name = "hexlet-route"
     http_route {
@@ -93,7 +89,7 @@ resource "yandex_alb_load_balancer" "alb" {
     }
     tls {
       default_handler {
-        certificate_ids = [data.yandex_cm_certificate.cert.id]
+        certificate_ids = [data.yandex_cm_certificate.cm.id]
         http_handler {
           http_router_id = yandex_alb_http_router.router.id
         }
