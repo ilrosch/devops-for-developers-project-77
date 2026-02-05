@@ -1,0 +1,6 @@
+app_dir: redmine
+app_env: '{{ app_dir }}/.env'
+redmine_port: 80
+redmine_port_int: 3000
+
+db_password: '{{ vault_db_password }}'

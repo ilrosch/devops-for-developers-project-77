@@ -1,0 +1,9 @@
+---
+roles:
+  - name: geerlingguy.pip
+
+collections:
+  - name: community.docker
+  - name: ansible.windows
+  - name: community.general
+  - name: datadog.dd

@@ -1,0 +1,5 @@
+.pass
+.ansible
+.env.j2
+inventory.ini
+vault.yml

@@ -1,25 +1,18 @@
 TERRAFORM_DIR := terraform
 ANSIBLE_DIR := ansible
 
-terraform-init:
-	cd $(TERRAFORM_DIR) && terraform init
+ansible-deploy:
+	$(MAKE) -C $(ANSIBLE_DIR) setup
 
-terraform-destroy:
-	cd $(TERRAFORM_DIR) && terraform destroy
+ansible-destroy:
+	$(MAKE) -C $(ANSIBLE_DIR) rollback
 
-terraform-deploy:
-	cd $(TERRAFORM_DIR) && terraform apply
+tf-deploy:
+	$(MAKE) -C $(TERRAFORM_DIR) setup
 
-terraform-plan:
-	cd $(TERRAFORM_DIR) && terraform plan
+tf-destroy:
+	$(MAKE) -C $(TERRAFORM_DIR) tf-destroy
+	
+setup: tf-deploy ansible-deploy
 
-terraform-format:
-	cd $(TERRAFORM_DIR) && terraform fmt .
-
-terraform-validate:
-	cd $(TERRAFORM_DIR) && terraform validate .
-
-ansible-setup:
-	cd $(ANSIBLE_DIR) && $(MAKE) setup
-
-setup: terraform-deploy ansible-setup
+.PHONY: setup

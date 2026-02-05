@@ -9,3 +9,11 @@ resource "yandex_vpc_subnet" "subnet" {
   v4_cidr_blocks = ["10.0.0.0/24"]
   depends_on     = [yandex_vpc_network.net]
 }
+
+resource "yandex_vpc_address" "static-ip" {
+  name = "hexlet-static-ip"
+
+  external_ipv4_address {
+    zone_id = var.yc_zone
+  }
+}

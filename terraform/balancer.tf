@@ -68,7 +68,9 @@ resource "yandex_alb_load_balancer" "alb" {
     name = "http-listener"
     endpoint {
       address {
-        external_ipv4_address {}
+        external_ipv4_address {
+          address = yandex_vpc_address.static-ip.external_ipv4_address[0].address
+        }
       }
       ports = [80]
     }
@@ -83,13 +85,15 @@ resource "yandex_alb_load_balancer" "alb" {
     name = "https-listener"
     endpoint {
       address {
-        external_ipv4_address {}
+        external_ipv4_address {
+          address = yandex_vpc_address.static-ip.external_ipv4_address[0].address
+        }
       }
       ports = [443]
     }
     tls {
       default_handler {
-        certificate_ids = [data.yandex_cm_certificate.cm.id]
+        certificate_ids = [yandex_cm_certificate.cm.id]
         http_handler {
           http_router_id = yandex_alb_http_router.router.id
         }
@@ -97,9 +101,9 @@ resource "yandex_alb_load_balancer" "alb" {
     }
   }
 
-  depends_on = [yandex_alb_backend_group.backend-group]
-}
+  log_options {
+    disable = true
+  }
 
-output "alb_ip" {
-  value = yandex_alb_load_balancer.alb.listener[0].endpoint[0].address
+  depends_on = [yandex_alb_backend_group.backend-group, time_sleep.wait_for_cert_validation]
 }

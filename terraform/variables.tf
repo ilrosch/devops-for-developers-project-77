@@ -52,12 +52,6 @@ variable "db_password" {
   type        = string
 }
 
-variable "yc_ssl" {
-  description = "Certificate SSL"
-  sensitive   = true
-  type        = string
-}
-
 variable "domain" {
   description = "Your domain name"
   sensitive   = false

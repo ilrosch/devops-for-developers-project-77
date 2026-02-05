@@ -6,6 +6,9 @@ terraform {
     datadog = {
       source = "DataDog/datadog"
     }
+    time = {
+      source = "hashicorp/time"
+    }
   }
   required_version = ">= 0.13"
 }
