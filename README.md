@@ -28,9 +28,9 @@ make setup
 
 Other command:
 
-- [README with Ansible commands](https://github.com/ilrosch/devops-for-developers-project-77/tree/blob/main/ansible/README.md)
+- [README with Ansible commands](https://github.com/ilrosch/devops-for-developers-project-77/blob/main/ansible/README.md)
 
-- [README with Terraform commands](https://github.com/ilrosch/devops-for-developers-project-77/tree/blob/main/terraform/README.md)
+- [README with Terraform commands](https://github.com/ilrosch/devops-for-developers-project-77/blob/main/terraform/README.md)
 
 ```
 make ansible-deploy     # Deploy only application
